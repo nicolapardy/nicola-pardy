@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nicola Pardy</title>
+  <meta name="description" content="Nicola Pardy is a writer, editorial strategist, and producer living in New York." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:    #0f0f0e;
+      --mid:    #6b6b67;
+      --light:  #b0afa9;
+      --rule:   #d8d6d0;
+      --bg:     #f5f4f0;
+      --serif:  'EB Garamond', Georgia, serif;
+      --mono:   'DM Mono', 'Courier New', monospace;
+      --gutter: clamp(1.5rem, 5vw, 3.5rem);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 var(--gutter); }
+
+    /* ── HEADER ── */
+    header {
+      padding: 2rem var(--gutter);
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .site-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .site-location {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: clamp(4rem, 10vw, 8rem) var(--gutter) clamp(3rem, 7vw, 5rem);
+      max-width: 1080px;
+      margin: 0 auto;
+      border-top: 1px solid var(--rule);
+    }
+
+    .hero-headline {
+      font-size: clamp(2.8rem, 7.5vw, 6.5rem);
+      font-weight: 400;
+      line-height: 1.02;
+      letter-spacing: -0.015em;
+      max-width: 16ch;
+    }
+
+    .hero-headline em { font-style: italic; color: var(--mid); }
+
+    .hero-sub {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+      border-top: 1px solid var(--rule);
+      padding-top: 1.5rem;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--mid);
+      font-style: italic;
+      max-width: 38ch;
+    }
+
+    .hero-services {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+      text-transform: uppercase;
+      line-height: 2;
+    }
+
+    /* ── RULE ── */
+    hr { border: none; border-top: 1px solid var(--rule); max-width: 1080px; margin: 0 auto; }
+
+    /* ── SECTION ── */
+    .section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 6vw, 4rem) var(--gutter);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2rem;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+
+    .section-count {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--light);
+    }
+
+    /* ── WORK LIST ── */
+    .work-list { display: grid; gap: 0; }
+
+    .work-item {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 1rem;
+      align-items: baseline;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--rule);
+      cursor: pointer;
+      transition: opacity 0.15s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .work-item:first-child { border-top: 1px solid var(--rule); }
+    .work-item:hover { opacity: 0.55; }
+
+    .work-name {
+      font-size: clamp(1rem, 2.2vw, 1.3rem);
+      font-weight: 400;
+    }
+
+    .work-name em { font-style: italic; }
+
+    .work-services {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mid);
+      line-height: 1.8;
+    }
+
+    .work-year {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--light);
+      text-align: right;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── WRITING ── */
+    .writing-list { display: grid; gap: 0; }
+
+    .writing-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: start;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--rule);
+      transition: opacity 0.15s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .writing-item:first-child { border-top: 1px solid var(--rule); }
+    .writing-item:hover { opacity: 0.55; }
+
+    .writing-title {
+      font-size: clamp(1.05rem, 2.5vw, 1.45rem);
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 0.4rem;
+    }
+
+    .writing-title em { font-style: italic; }
+
+    .writing-excerpt {
+      font-size: 13.5px;
+      color: var(--mid);
+      font-style: italic;
+      max-width: 58ch;
+      line-height: 1.65;
+    }
+
+    .writing-right { text-align: right; flex-shrink: 0; }
+
+    .writing-pub {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .writing-year {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--light);
+    }
+
+    /* ── NIGHT TOAST CALLOUT ── */
+    .substack-callout {
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      border: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .substack-callout p {
+      font-size: 14px;
+      color: var(--mid);
+      font-style: italic;
+      max-width: 50ch;
+    }
+
+    .substack-callout a {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ── ABOUT ── */
+    .about-prose {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: start;
+    }
+
+    .about-prose p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--ink);
+    }
+
+    .about-prose p + p { margin-top: 1.2rem; }
+    .about-prose p em { font-style: italic; }
+
+    .about-col-right p {
+      color: var(--mid);
+      font-style: italic;
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .about-credits {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .about-credits p {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--light);
+      line-height: 2.1;
+    }
+
+    /* ── CONTACT ── */
+    .contact-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: end;
+    }
+
+    .contact-tagline {
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--light);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-email {
+      font-size: clamp(1.4rem, 3.5vw, 2.6rem);
+      font-weight: 400;
+      font-style: italic;
+      display: inline-block;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 4px;
+      transition: border-color 0.2s;
+    }
+
+    .contact-email:hover { border-color: var(--ink); }
+
+    .contact-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      padding-bottom: 4px;
+    }
+
+    .contact-links a {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      transition: color 0.15s;
+    }
+
+    .contact-links a:hover { color: var(--ink); }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 2rem var(--gutter);
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--rule);
+    }
+
+    footer span {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+
+    /* ── FADE IN ── */
+    .fade { opacity: 0; transform: translateY(14px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade.in { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .hero-sub { grid-template-columns: 1fr; }
+      .work-item { grid-template-columns: 1fr auto; }
+      .work-services { display: none; }
+      .about-prose { grid-template-columns: 1fr; }
+      .contact-block { grid-template-columns: 1fr; }
+      .writing-item { grid-template-columns: 1fr; }
+      .writing-right { text-align: left; margin-top: 0.5rem; }
+      .substack-callout { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="site-name">Nicola Pardy™</span>
+    <span class="site-location">Brooklyn, NY</span>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero fade">
+    <h1 class="hero-headline">
+      Writer, producer<br><em>&amp; editorial strategist.</em>
+    </h1>
+    <div class="hero-sub">
+      <p class="hero-desc">
+        Nicola Pardy makes video work and writes words. She's produced for Vogue, Refinery29, the Wall Street Journal Magazine, and Sony Music, and has written for The New York Times and The Outline.
+      </p>
+      <div class="hero-services">
+        <p>Creative Production</p>
+        <p>Editorial Writing</p>
+        <p>Editorial Strategy</p>
+        <p>Cultural Criticism</p>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- WORK -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-label">Selected Work</span>
+      <span class="section-count">01</span>
+    </div>
+    <div class="work-list">
+
+      <a class="work-item fade" href="https://player.vimeo.com/video/794615884" target="_blank" rel="noopener">
+        <p class="work-name"><em>Women Life Freedom</em></p>
+        <p class="work-services">Production<br>Film</p>
+        <p class="work-year">2023</p>
+      </a>
+
+      <a class="work-item fade" href="https://www.youtube.com/watch?v=T4g39aYH6VQ" target="_blank" rel="noopener">
+        <p class="work-name">Sha'Carri Richardson's Vogue Cover Shoot</p>
+        <p class="work-services">Production<br>Vogue</p>
+        <p class="work-year">2023</p>
+      </a>
+
+      <a class="work-item fade" href="https://www.youtube.com/watch?v=dv774GHoWuY" target="_blank" rel="noopener">
+        <p class="work-name"><em>The One with Angelina Jolie</em></p>
+        <p class="work-services">Production<br>Film</p>
+        <p class="work-year">2023</p>
+      </a>
+
+      <a class="work-item fade" href="https://player.vimeo.com/video/695295606" target="_blank" rel="noopener">
+        <p class="work-name">Life in Looks with Scarlett Johansson</p>
+        <p class="work-services">Production<br>Film</p>
+        <p class="work-year">2022</p>
+      </a>
+
+      <a class="work-item fade" href="https://player.vimeo.com/video/816332985" target="_blank" rel="noopener">
+        <p class="work-name"><em>Fallin' — Joey Badass</em></p>
+        <p class="work-services">Production<br>Music Video</p>
+        <p class="work-year">2023</p>
+      </a>
+
+      <a class="work-item fade" href="https://player.vimeo.com/video/623842358" target="_blank" rel="noopener">
+        <p class="work-name">Behind Billie Eilish's Met Gala Dress</p>
+        <p class="work-services">Production<br>Vogue</p>
+        <p class="work-year">2021</p>
+      </a>
+
+      <a class="work-item fade" href="https://player.vimeo.com/video/706383418" target="_blank" rel="noopener">
+        <p class="work-name"><em>Julie Dash on Making Daughters of the Dust</em></p>
+        <p class="work-services">Production<br>WSJ Magazine</p>
+        <p class="work-year">2022</p>
+      </a>
+
+      <a class="work-item fade" href="https://player.vimeo.com/video/792853194" target="_blank" rel="noopener">
+        <p class="work-name">Erdem Moralioglu's Objects of Affection</p>
+        <p class="work-services">Production<br>Film</p>
+        <p class="work-year">2023</p>
+      </a>
+
+      <a class="work-item fade" href="https://player.vimeo.com/video/771259499" target="_blank" rel="noopener">
+        <p class="work-name"><em>Bette Midler's Life in Looks</em></p>
+        <p class="work-services">Production<br>Film</p>
+        <p class="work-year">2023</p>
+      </a>
+
+      <a class="work-item fade" href="https://player.vimeo.com/video/695297561" target="_blank" rel="noopener">
+        <p class="work-name">What Barbie Ferreira Wears in a Week</p>
+        <p class="work-services">Production<br>Film</p>
+        <p class="work-year">2022</p>
+      </a>
+
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- WRITING -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-label">Writing</span>
+      <span class="section-count">02</span>
+    </div>
+    <div class="writing-list">
+
+      <a class="writing-item fade" href="https://www.nytimes.com/2019/07/26/opinion/women-feminist-tshirts.html" target="_blank" rel="noopener">
+        <div>
+          <p class="writing-title">This Is An Article About Women</p>
+          <p class="writing-excerpt">On feminist slogan T-shirts, who wears them, and what they actually say.</p>
+        </div>
+        <div class="writing-right">
+          <span class="writing-pub">The New York Times</span>
+          <span class="writing-year">2019</span>
+        </div>
+      </a>
+
+      <a class="writing-item fade" href="https://theoutline.com/post/8289/a-good-place-gabi-abrao-sighswoon-instagram" target="_blank" rel="noopener">
+        <div>
+          <p class="writing-title"><em>The Influencer Is Present</em></p>
+          <p class="writing-excerpt">A profile of Gabi Abrao, the poet and Instagram presence behind @sighswoon.</p>
+        </div>
+        <div class="writing-right">
+          <span class="writing-pub">The Outline</span>
+          <span class="writing-year">2019</span>
+        </div>
+      </a>
+
+      <a class="writing-item fade" href="https://www.refinery29.com/en-us/2018/03/192839/ivanka-trump-julie-nixon-eisenhower-first-daughter-father-gender" target="_blank" rel="noopener">
+        <div>
+          <p class="writing-title">Before Ivanka Trump, There Was Julie Nixon</p>
+          <p class="writing-excerpt">On the role of the political daughter — compliant, decorative, and indispensable.</p>
+        </div>
+        <div class="writing-right">
+          <span class="writing-pub">Refinery29</span>
+          <span class="writing-year">2018</span>
+        </div>
+      </a>
+
+      <a class="writing-item fade" href="https://www.refinery29.com/en-us/2017/11/180422/lisa-bloom-harvey-weinstein-sexual-assault-harassment-lawyer" target="_blank" rel="noopener">
+        <div>
+          <p class="writing-title"><em>Should Women Represent Men Accused of Sexual Assault?</em></p>
+          <p class="writing-excerpt">On Lisa Bloom, Harvey Weinstein, and the contradictions of feminist lawyering.</p>
+        </div>
+        <div class="writing-right">
+          <span class="writing-pub">Refinery29</span>
+          <span class="writing-year">2017</span>
+        </div>
+      </a>
+
+      <a class="writing-item fade" href="https://nicolapardy.substack.com/p/online-people-lenea-sims" target="_blank" rel="noopener">
+        <div>
+          <p class="writing-title">Online People</p>
+          <p class="writing-excerpt">On Lenea Sims and the strange intimacy of following someone's life online.</p>
+        </div>
+        <div class="writing-right">
+          <span class="writing-pub">Night Toast</span>
+          <span class="writing-year">—</span>
+        </div>
+      </a>
+
+      <a class="writing-item fade" href="https://nicolapardy.substack.com/p/the-authenticity-trap" target="_blank" rel="noopener">
+        <div>
+          <p class="writing-title"><em>The Authenticity Trap</em></p>
+          <p class="writing-excerpt">On the performance of realness and what we lose when everything has to be genuine.</p>
+        </div>
+        <div class="writing-right">
+          <span class="writing-pub">Night Toast</span>
+          <span class="writing-year">—</span>
+        </div>
+      </a>
+
+      <a class="writing-item fade" href="https://nicolapardy.substack.com/p/our-obsession-with-dream-homes" target="_blank" rel="noopener">
+        <div>
+          <p class="writing-title">Our Obsession With Dream Homes</p>
+          <p class="writing-excerpt">On the architecture of longing and why we never stop scrolling Zillow.</p>
+        </div>
+        <div class="writing-right">
+          <span class="writing-pub">Night Toast</span>
+          <span class="writing-year">—</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="substack-callout fade">
+      <p>🌙 <em>Night Toast</em> is a newsletter about art, the internet, belonging, and place. Named in honor of my grandmother Mimi, who lives in Glasgow.</p>
+      <a href="https://nicolapardy.substack.com/about" target="_blank" rel="noopener">Subscribe →</a>
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- ABOUT -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-label">About</span>
+      <span class="section-count">03</span>
+    </div>
+    <div class="about-prose fade">
+      <div>
+        <p>
+          Nicola Pardy is a writer, editorial strategist, and producer living in New York.
+        </p>
+        <p>
+          She's produced video work for outlets including <em>Vogue</em>, The Wall Street Journal Magazine, Refinery29, and Sony Music — covering artists, designers, athletes, and the culture that connects them.
+        </p>
+        <p>
+          She holds a master's degree in Gender &amp; Social Policy from the London School of Economics, and has written on current events, gender, and visual culture for The New York Times, The Outline, and Refinery29.
+        </p>
+      </div>
+      <div class="about-col-right">
+        <p>
+          Her newsletter, <em>Night Toast</em>, explores ideas about art, the internet, belonging, and place — close readings of the ordinary.
+        </p>
+        <div class="about-credits">
+          <p>
+            Production work for:<br>
+            Vogue, WSJ Magazine,<br>
+            Refinery29, Sony Music,<br>
+            and others.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <!-- CONTACT -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-label">Contact</span>
+      <span class="section-count">04</span>
+    </div>
+    <div class="contact-block fade">
+      <div>
+        <p class="contact-tagline">Available for commissions &amp; collaborations</p>
+        <a href="mailto:nicolapardy@gmail.com" class="contact-email">nicolapardy@gmail.com</a>
+      </div>
+      <div>
+        <div class="contact-links">
+          <a href="https://nicolapardy.substack.com" target="_blank" rel="noopener">Substack</a>
+          <a href="https://www.instagram.com/nicolapardy/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.linkedin.com/in/nicola-pardy/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="http://twitter.com/nicolawpardy" target="_blank" rel="noopener">X / Twitter</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2025 Nicola Pardy</span>
+    <span>Brooklyn, NY</span>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), 60);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.fade').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
